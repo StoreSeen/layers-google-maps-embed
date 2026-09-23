@@ -4,7 +4,7 @@ Tags: layers, google maps, embed, map, widget
 Requires at least: 4.9
 Tested up to: 6.6
 Requires PHP: 5.6
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: MIT
 License URI: https://opensource.org/license/mit/
 
@@ -37,6 +37,8 @@ For production, restrict each browser key by website referrer and restrict its A
 
 == Changelog ==
 
+= 0.1.1 =
+* Register the widget after Layers loads its base widget class.
+
 = 0.1.0 =
 * Initial test release.
-

@@ -3,7 +3,7 @@
  * Plugin Name: Layers Google Maps Embed
  * Plugin URI: https://github.com/StoreSeen/layers-google-maps-embed
  * Description: Adds a Layers-compatible Google Maps Embed API widget that reuses the API key stored under Site Settings > Additional Scripts.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: StoreSeen
  * Author URI: https://github.com/StoreSeen
  * License: MIT
@@ -17,13 +17,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LAYERS_GOOGLE_MAPS_EMBED_VERSION', '0.1.0' );
+define( 'LAYERS_GOOGLE_MAPS_EMBED_VERSION', '0.1.1' );
 define( 'LAYERS_GOOGLE_MAPS_EMBED_FILE', __FILE__ );
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
 
 /**
  * Register the widget after Layers has registered its base widget class.
+ *
+ * Layers loads Layers_Widget on widgets_init at priority 20, so this callback
+ * must run later. Plugins load before themes, making the default same-priority
+ * ordering too early.
  */
 function layers_google_maps_embed_register_widget() {
 	if ( ! class_exists( 'Layers_Widget' ) ) {
@@ -33,7 +37,7 @@ function layers_google_maps_embed_register_widget() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-layers-google-maps-embed-widget.php';
 	register_widget( 'Layers_Google_Maps_Embed_Widget' );
 }
-add_action( 'widgets_init', 'layers_google_maps_embed_register_widget', 20 );
+add_action( 'widgets_init', 'layers_google_maps_embed_register_widget', 30 );
 
 /**
  * Explain why the widget is unavailable when Layers is not the active theme.
@@ -50,4 +54,3 @@ function layers_google_maps_embed_admin_notice() {
 	<?php
 }
 add_action( 'admin_notices', 'layers_google_maps_embed_admin_notice' );
-
