@@ -16,7 +16,7 @@ It reuses the API key already stored by Layers at **Customizer > Site Settings >
 
 ## Installation
 
-1. Download the release ZIP.
+1. Download [`layers-google-maps-embed.zip`](https://github.com/StoreSeen/layers-google-maps-embed/releases/latest/download/layers-google-maps-embed.zip) from the latest GitHub release.
 2. In WordPress, open **Plugins > Add New > Upload Plugin**.
 3. Upload and activate the ZIP.
 4. Ensure the site's existing Google browser key has **Maps Embed API** enabled.
@@ -48,4 +48,3 @@ Create the installable ZIP on Windows:
 ## License
 
 [MIT](LICENSE)
-
